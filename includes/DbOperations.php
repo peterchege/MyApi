@@ -41,7 +41,7 @@
             }
         } 
 
-         private function getUsersPasswordByEmail($email){
+        private function getUsersPasswordByEmail($email){
             $stmt = $this->con->prepare("SELECT password FROM users WHERE email = ?" );
             $stmt ->bind_param("s", $email);
             $stmt->execute();
@@ -84,9 +84,9 @@
 
         public function updateUser($email, $name, $school, $id){
         
-            $stmt = $this->con->prepair("UPDATE user SET email = ?, name = ?, school = ? WHERE id = ?");
+            $stmt = $this->con->prepare("UPDATE users SET email = ?, name = ?, school = ? WHERE id = ?");
             $stmt->bind_param("sssi", $email, $name, $school, $id);
-            if($stmt->execute());
+            if($stmt->execute())
 
             return true;
             return false;
