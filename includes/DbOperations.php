@@ -82,6 +82,18 @@
             return $user;
         }
 
+        public function updateUser($email, $name, $school, $id){
+        
+            $stmt = $this->con->prepair("UPDATE user SET email = ?, name = ?, school = ? WHERE id = ?");
+            $stmt->bind_param("sssi", $email, $name, $school, $id);
+            if($stmt->execute());
+
+            return true;
+            return false;
+        }
+
+        
+
         private function isEmailExist($email){
             $stmt = $this->con->prepare("SELECT id FROM users WHERE email = ?"); 
             $stmt->bind_param("s", $email);

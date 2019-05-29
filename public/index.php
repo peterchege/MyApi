@@ -132,7 +132,7 @@ $app->post('/userlogin', function(Request $request, Response $response){
             return $response
                         ->withHeader('Content-type', 'application/json')
                         ->withStatus(200);
-        }
+        }  
     }
 });
 
@@ -153,6 +153,55 @@ $app->get('/allusers', function(Request $request, Response $response){
                         ->withHeader('Content-type', 'application/json')
                         ->withStatus(200);
 
+});
+
+$app->put('/updateuser/{id}', function(Request $request, Response $response, array $args){
+
+    $id = $args['id'];
+    
+    if(!haveEmptyParameters(array('email','name','school','id'), $response)){
+
+        $request_data = $request->getParsedBody();
+        $email =$request_data['email'];
+        $name = $request_data['name'];
+        $school = $request_data['school'];
+        $id = $request_data['id'];
+
+        $db = new DbOperations;
+
+        if($db->updateUser($email, $name, $school, $id)){
+
+            $response_data = array();
+            $response_data['error'] = false;
+            $response_data['message'] = 'User Updated suceessfully';
+            $user = $db->getUserByEmail($email);
+            $response_data['user'] = $user;
+
+            $response->write(json_encode($response_data));
+
+            return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
+        }else {
+            $response_data = array();
+            $response_data['error'] = true;
+            $response_data['message'] = 'Please try again later';
+            $user = $db->getUserByEmail($email);
+            $response_data['user'] = $user;
+
+            $response->write(json_encode($response_data));
+
+            return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
+
+        }
+
+    }
+
+        return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
 });
 
 function haveEmptyParameters($required_params, $response){
