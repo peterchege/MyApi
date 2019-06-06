@@ -98,8 +98,8 @@
                 if(password_verify($currentpassword, $hashed_password)){
 
                     $hash_password = password_hash($newpassword, PASSWORD_DEFAULT);
-                    $stmt = $this->$con->prepare('UPDATE users SET password = ? WHERE email = ?');
-                    $stmt->bind_param($hashed_password, $email);
+                    $stmt = $this->con->prepare("UPDATE users SET password = ? WHERE email = ?");
+                    $stmt->bind_param("ss", $hashed_password, $email);
 
                     if( $stmt->execute())
                         return PASSWORD_CHANGED;
