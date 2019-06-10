@@ -113,7 +113,7 @@
         }
 
         public function deleteUser($id){
-            $stmt = $this->con->prepare("DELETE users WHERE id = ?");
+            $stmt = $this->con->prepare("DELETE FROM users WHERE id = ?");
             $stmt->bind_param("i", $id);
             if($stmt->execute())
             return true;

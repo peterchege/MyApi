@@ -248,7 +248,7 @@ $app->put('/updatepassword', function(Request $request, Response $response){
                         ->withStatus(422);
 });
 
-$app->delete('/deletuser/{id}', function(Request $request, Response $response, array $args){
+$app->delete('/deleteuser/{id}', function(Request $request, Response $response, array $args){
 
     $id = $args['id'];
 
@@ -265,7 +265,7 @@ $app->delete('/deletuser/{id}', function(Request $request, Response $response, a
     }
 
     $response->write(json_encode($response_data));
-    
+
     return $response
                         ->withHeader('Content-type', 'application/json')
                         ->withStatus(200);
