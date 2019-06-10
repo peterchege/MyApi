@@ -248,6 +248,29 @@ $app->put('/updatepassword', function(Request $request, Response $response){
                         ->withStatus(422);
 });
 
+$app->delete('/deletuser/{id}', function(Request $request, Response $response, array $args){
+
+    $id = $args['id'];
+
+    $db = new DbOperations;
+
+    if($db->deleteUser($id)){
+
+        $response_data['error'] = false;
+        $response_data['message'] = 'User has been deleted';
+    }else{
+
+        $response_data['error'] = true;
+        $response_data ['message'] = 'Please try again later';
+    }
+
+    $response->write(json_encode($response_data));
+    
+    return $response
+                        ->withHeader('Content-type', 'application/json')
+                        ->withStatus(200);
+});
+
 function haveEmptyParameters($required_params, $request, $response){
     $error = false;
     $error_params = '';
