@@ -14,7 +14,7 @@
         }
 
         public function createUser($email, $password, $name, $school){
-           if(!$this->isEmailExist($email)){
+            if(!$this->isEmailExist($email)){
                 $stmt =  $this->con->prepare("INSERT INTO users (email, password, name, school) VALUES(?, ?, ?, ?)");
                 $stmt->bind_param("ssss", $email, $password, $name, $school);
                 if($stmt->execute()){
@@ -22,7 +22,7 @@
                 } else{
                     return USER_FAILURE;
                 }
-           }
+        }
             return USER_EXISTS;
         }
 
@@ -64,7 +64,7 @@
                     $user['school'] = $school;
                     array_push($users, $user);
             }
-          
+        
             return $users;
         }
 

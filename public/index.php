@@ -288,7 +288,6 @@ function haveEmptyParameters($required_params, $request, $response){
         $error_detail['error'] = true;
         $error_detail['message'] = 'Required parameters ' . substr($error_params, 0, -2) . ' are missing or empty';
         $response->write(json_encode($error_detail));
-
     }
     return $error;
 } 
