@@ -155,24 +155,24 @@ $app->get('/allusers', function(Request $request, Response $response){
 
 });
 
-$app->get('/paydates', function(Request $request, Response $response){
+// $app->get('/paydates', function(Request $request, Response $response){
 
-    $db = new DbOperations;
+//     $db = new DbOperations;
 
-    $paydate = $db->getAllPaydates();
+//     $paydate = $db->getAllPaydates();
 
-    $response_data = array();
+//     $response_data = array();
     
-    $response_data['error'] = false;
-    $response_data['paydate'] = $paydate;
+//     $response_data['error'] = false;
+//     $response_data['paydate'] = $paydate;
 
-    $response->write(json_encode($response_data));
+//     $response->write(json_encode($response_data));
     
-            return $response
-                        ->withHeader('Content-type', 'application/json')
-                        ->withStatus(200);
+//             return $response
+//                         ->withHeader('Content-type', 'application/json')
+//                         ->withStatus(200);
 
-});
+// });
 
 $app->put('/updateuser/{id}', function(Request $request, Response $response, array $args){
 

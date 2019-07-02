@@ -67,26 +67,26 @@
         
             return $users;
         }
-        public function getAllPaydates(){
-            // $stmt = $this->con->prepare("SELECT date_id, plan_id, pay_month, pay_amount, unit_id, client_id, pay_state, author_id, post_date FORM project_matrix_paydate;");
-            $stmt = $this->con->prepare("SELECT * FROM project_matrix_paydate;");
-            $stmt->execute();
-            $stmt->bind_result($date_id, $plan_id, $pay_month, $pay_amount, $unit_id, $client_id, $pay_state, $author_id,  $post_date);
-            $paydate = array();
-            while($stmt->fetch()){
-                    $paydate = array();
-                    $paydate['date_id'] = $date_id;
-                    $paydate['plan_id'] = $plan_id;
-                    $paydate['pay_month'] = $pay_month;
-                    $paydate['pay_amount'] = $pay_amount;
-                    $paydate['unit_id'] = $unit_id;
-                    $paydate['client_id'] = $client_id;
-                    $paydate['pay_state'] = $pay_state;
-                    $paydate['author_id'] = $author_id;
-                    $paydate['post_date'] = $post_date;
-                    array_push($paydate, $paydate);
-            }
-        }
+        
+        // public function getAllPaydates(){
+        //     $stmt = $this->con->prepare("SELECT * FROM project_matrix_paydate;");
+        //     $stmt->execute();
+        //     $stmt->bind_result($date_id, $plan_id, $pay_month, $pay_amount, $unit_id, $client_id, $pay_state, $author_id,  $post_date);
+        //     $paydate = array();
+        //     while($stmt->fetch()){
+        //             $paydate = array();
+        //             $paydate['date_id'] = $date_id;
+        //             $paydate['plan_id'] = $plan_id;
+        //             $paydate['pay_month'] = $pay_month;
+        //             $paydate['pay_amount'] = $pay_amount;
+        //             $paydate['unit_id'] = $unit_id;
+        //             $paydate['client_id'] = $client_id;
+        //             $paydate['pay_state'] = $pay_state;
+        //             $paydate['author_id'] = $author_id;
+        //             $paydate['post_date'] = $post_date;
+        //             array_push($paydate, $paydate);
+        //     }
+        // }
 
         public function getUserByEmail($email){
             $stmt = $this->con->prepare("SELECT id, email, name, school FROM users WHERE email = ?" );
