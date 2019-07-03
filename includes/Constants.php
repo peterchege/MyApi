@@ -1,9 +1,9 @@
 <?php
 
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'my_app');
+define('DB_USER', 'vinehubc_myapp');
+define('DB_PASSWORD', 'Herihomes2019');
+define('DB_NAME', 'vinehubc_myapp');
 
 define('USER_CREATED', 101);
 define('USER_EXISTS', 102);
